@@ -16,6 +16,7 @@
     "gulp-if": "^1.2.5",
     "gulp-livereload": "^3.4.0",
     "gulp-util": "^3.0.2",
+    "jquery-browserify": "^1.8.1",
     "vinyl-source-stream": "^1.0.0",
     "watchify": "^2.2.1"
   },

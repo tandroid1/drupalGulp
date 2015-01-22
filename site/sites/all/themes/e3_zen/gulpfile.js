@@ -65,7 +65,7 @@ gulp.task('compass', function() {
 // define the browserify-watch as dependencies for this task
 gulp.task('watch', ['browserify-watch'], function(){
   // watch other files, for example .less file
-  gulp.watch('./sass/*.scss',
+  gulp.watch('./sass/*/*.scss',
     ['compass']);
 
   // Start live reload server
