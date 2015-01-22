@@ -13,13 +13,11 @@
  * @param $hook
  *   The name of the template being rendered ("page" in this case.)
  */
-/* -- Delete this line if you want to use this function
 function e3_zen_preprocess_page(&$variables, $hook) {
-  drupal_add_js(drupal_get_path('theme', 'e3_zen') .'/js/utils.js', array(
+  drupal_add_js(drupal_get_path('theme', 'e3_zen') .'/js/dist/share.js', array(
       'scope' => 'footer'
   ));
 }
-// */
 
 function e3_zen_preprocess_html(&$variables) {
   //if context_layouts module exist, append active layout class to body
