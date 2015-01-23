@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var glob = require('glob');
 var browserify = require('browserify');
 var source = require("vinyl-source-stream");
 var watchify = require('watchify');
@@ -7,6 +8,12 @@ var gulpif = require('gulp-if');
 var sass = require('gulp-sass');
 var compass = require('gulp-compass');
 var watch;
+var modulesDir = '../../modules/custom/*/js/main.js';
+
+var watchPaths = glob(modulesDir, {sync: true});
+
+watchPaths.push('./js/src/main.js');
+console.log(watchPaths);
 
 gulp.task('browserify-nowatch', function(){
   watch = false;
@@ -15,10 +22,10 @@ gulp.task('browserify-nowatch', function(){
 
 gulp.task('browserify-watch', function(){
   watch = true;
-  browserifyShare();
+  browserifyShare(watchPaths);
 });
 
-function browserifyShare(){
+function browserifyShare(paths){
   var b = browserify({
     cache: {},
     packageCache: {},
@@ -33,7 +40,10 @@ function browserifyShare(){
     });
   }
 
-  b.add('./js/src/main.js');
+  paths.forEach(function(val, i) {
+    console.log(paths[i]);
+    b.add(paths[i]);
+  });
   bundleShare(b);
 }
 
